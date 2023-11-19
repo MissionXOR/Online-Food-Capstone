@@ -140,6 +140,7 @@
             $firstName = $row['firstName'];
             $lastName = $row['lastName'];
             $email = $row['email'];
+            $diabetes = $_POST["diabetes"];
             $phone = $row['phone'];
             $userType = $row['userType'];
             if($userType == 0) {
@@ -198,6 +199,10 @@
                         <div class="form-group">
                             <b><label for="email">Email:</label></b>
                             <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required value="<?php echo $email ?>">
+                        </div>
+                        <div class="form-group">
+                            <b><label for="diabetes">Do You Have Diabetes?</label></b>
+                            <input type="text" class="form-control" id="diabetes" name="diabetes" placeholder="Enter Yes/No" required value="<?php echo $diabetes ?>">
                         </div>
                         <div class="form-row">
                             <div class="form-group  col-md-6">

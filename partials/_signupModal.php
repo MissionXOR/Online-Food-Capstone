@@ -29,6 +29,10 @@
                   <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
               </div>
               <div class="form-group">
+                  <b><label for="diabetes">Do You Have Diabetes?</label></b>
+                  <input type="text" class="form-control" id="diabetes" name="diabetes" placeholder="Enter Yes/No" required>
+                </div>
+              <div class="form-group">
                 <b><label for="phone">Phone No:</label></b>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
