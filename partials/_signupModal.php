@@ -28,10 +28,17 @@
                   <b><label for="email">Email:</label></b>
                   <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
               </div>
-              <div class="form-group">
-                  <b><label for="diabetes">Do You Have Diabetes?</label></b>
-                  <input type="text" class="form-control" id="diabetes" name="diabetes" placeholder="Enter Yes/No" required>
-                </div>
+             
+                <div class="form-group">
+                <b><label for="diabetes">Do You Have Diabetes?</label></b>
+                <select class="form-control" id="diabetes" name="diabetes" required>
+                    <option value="" disabled selected>Select one</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+               </div>
+
+
               <div class="form-group">
                 <b><label for="phone">Phone No:</label></b>
                 <div class="input-group mb-3">

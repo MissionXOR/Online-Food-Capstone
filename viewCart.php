@@ -11,13 +11,13 @@
     <title>Cart</title>
     <link rel = "icon" href ="img/logo.jpg" type = "image/x-icon">
     <style>
-    #cont{
-        min-height : 626px;
-    }
-      body{
-        background-color: powderblue;
-      }
-      
+        #cont {
+            min-height: 626px;
+        }
+
+        body {
+            background-color: powderblue;
+        }
     </style>
 </head>
 <body>
@@ -30,7 +30,7 @@
     <div class="container" id="cont">
         <div class="row">
             <div class="alert alert-info mb-0" style="width: -webkit-fill-available;">
-              <strong>Info! online payment are currently available but You can face some technical problem.</strong> 
+              <strong>Info! online payment is currently available, but you may face some technical problems.</strong> 
             </div>
             <div class="col-lg-12 text-center border rounded bg-light my-3">
                 <h1>My Cart</h1>
@@ -62,6 +62,19 @@
                                 $countCalorie=0;
                                 $totalPrice = 0;
                                 $totalCalories=0;
+                                
+                                // Check if the user has diabetes
+                                $diabetesSql = "SELECT diabetes FROM users WHERE id = $userId";
+                                $diabetesResult = mysqli_query($conn, $diabetesSql);
+                                
+                                // Check for errors in the query
+                                if (!$diabetesResult) {
+                                    die("Error in SQL query: " . mysqli_error($conn));
+                                }
+
+                                $diabetesRow = mysqli_fetch_assoc($diabetesResult);
+                                $userHasDiabetes = ($diabetesRow['diabetes'] == 'yes');
+
                                 while($row = mysqli_fetch_assoc($result)){
                                     $pizzaId = $row['pizzaId'];
                                     $Quantity = $row['itemQuantity'];
@@ -102,6 +115,14 @@
                                             </td>
                                         </tr>';
                                 }
+                                
+                                // Check if the user has diabetes and total calories are greater than 1000
+                                if ($userHasDiabetes && $totalCalories > 1000) {
+                                    echo '<tr>
+                                    <td colspan="7" class="text-danger"><strong style="font-size: larger;">Ordering total more than 1000 calories is harmful for Diabetes!</strong></td>
+                                          </tr>';
+                                }
+                                
                                 if($counter==0) {
                                     ?><script> document.getElementById("cont").innerHTML = '<div class="col-md-12 my-5"><div class="card"><div class="card-body cart"><div class="col-sm-12 empty-cart-cls text-center"> <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3"><h3><strong>Your Cart is Empty</strong></h3><h4>Add something to make me happy :)</h4> <a href="index.php" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a> </div></div></div></div>';</script> <?php
                                 }

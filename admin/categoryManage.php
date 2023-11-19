@@ -26,7 +26,7 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" name="submit" class="btn btn-sm btn-primary col-sm-3 offset-md-4"> Create </button>
+                                    <button type="submit" name="createCategory" class="btn btn-sm btn-primary col-sm-3 offset-md-4"> Create </button>
                                 </div>
                             </div>
                         </div>

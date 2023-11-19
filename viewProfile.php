@@ -201,9 +201,13 @@
                             <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required value="<?php echo $email ?>">
                         </div>
                         <div class="form-group">
-                            <b><label for="diabetes">Do You Have Diabetes?</label></b>
-                            <input type="text" class="form-control" id="diabetes" name="diabetes" placeholder="Enter Yes/No" required value="<?php echo $diabetes ?>">
-                        </div>
+                        <b><label for="diabetes">Do You Have Diabetes?</label></b>
+                        <select class="form-control" id="diabetes" name="diabetes" required value="<?php echo $diabetes ?>">
+                            <option value="" disabled selected>Select one</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
                         <div class="form-row">
                             <div class="form-group  col-md-6">
                                 <b><label for="phone">Phone No:</label></b>
