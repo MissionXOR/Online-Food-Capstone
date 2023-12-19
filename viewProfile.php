@@ -135,19 +135,31 @@
         <?php 
             $sql = "SELECT * FROM users WHERE id='$userId'"; 
             $result = mysqli_query($conn, $sql);
-            $row=mysqli_fetch_assoc($result);
+            $row = mysqli_fetch_assoc($result);
             $username = $row['username'];
             $firstName = $row['firstName'];
             $lastName = $row['lastName'];
             $email = $row['email'];
-            $diabetes = $_POST["diabetes"];
+            $diabetes=$row['diabetes'];
+            $diet=$row['diet'];
+            $rate=$row['rate'];
             $phone = $row['phone'];
             $userType = $row['userType'];
-            if($userType == 0) {
+            if ($userType == 0) {
                 $userType = "User";
-            }
-            else {
+            } else {
                 $userType = "Admin";
+            }
+    
+            // Initialize variables for diabetes, diet, and rate
+            $diabetes = $diet = $rate = '';
+    
+            // Check if the form is submitted
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                // Check if the keys exist in the $_POST array before accessing them
+                $diabetes = isset($_POST['diabetes']) ? $_POST['diabetes'] : '';
+                $diet = isset($_POST['diet']) ? $_POST['diet'] : '';
+                $rate = isset($_POST['rate']) ? $_POST['rate'] : '';
             }
 
         ?>
@@ -201,13 +213,28 @@
                             <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required value="<?php echo $email ?>">
                         </div>
                         <div class="form-group">
-                        <b><label for="diabetes">Do You Have Diabetes?</label></b>
-                        <select class="form-control" id="diabetes" name="diabetes" required value="<?php echo $diabetes ?>">
-                            <option value="" disabled selected>Select one</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
+                                <b><label for="diabetes">Do You Have Diabetes?</label></b>
+                                <select class="form-control" id="diabetes" name="diabetes">
+                                    <option value="<?php echo $diabetes ?>" >select one</option>
+                                    <option value="yes" <?php if ($diabetes == 'yes') echo 'selected'; ?>>Yes</option>
+                                    <option value="no" <?php if ($diabetes == 'no') echo 'selected'; ?>>No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <b><label for="diet">Are you on diet?</label></b>
+                                <select class="form-control" id="diet" name="diet">
+                                    <option value="<?php echo $diet ?>">select one</option>
+                                    <option value="yes" <?php if ($diet == 'yes') echo 'selected'; ?>>Yes</option>
+                                    <option value="no" <?php if ($diet == 'no') echo 'selected'; ?>>No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <b><label for="rate">How much is your regular calorie intake:</label></b>
+                                <input type="number" class="form-control" id="rate" name="rate" placeholder=""  value="<?php echo $rate; ?>">
+                            </div>
+
                         <div class="form-row">
                             <div class="form-group  col-md-6">
                                 <b><label for="phone">Phone No:</label></b>

@@ -22,6 +22,16 @@
 								<label class="control-label">Price</label>
 								<input type="number" class="form-control" name="price" required min="1">
 							</div>
+
+							<div class="form-group">
+								<label for="sugar">Does this food contain sugar?</label>
+								<select class="form-control" id="sugar" name="sugar" required>
+									<option value="" disabled selected>Select one</option>
+									<option value="yes">Yes</option>
+									<option value="no">No</option>
+								</select>
+							</div>
+
 							<div class="form-group">
 								<label class="control-label">Calories</label>
 								<input type="number" class="form-control" name="calorie" required min="1">
@@ -83,6 +93,7 @@
                                     $pizzaName = $row['pizzaName'];
                                     $pizzaPrice = $row['pizzaPrice'];
 									$pizzaCal = $row['pizzaCal'];
+									$sugar=$row['sugar'];
                                     $pizzaDesc = $row['pizzaDesc'];
                                     $pizzaCategorieId = $row['pizzaCategorieId'];
 
@@ -96,6 +107,7 @@
                                                 <p>Description : <b class="truncate">' .$pizzaDesc. '</b></p>
                                                 <p>Price : <b>' .$pizzaPrice. '</b></p>
 												<p>Calorie : <b>' .$pizzaCal. '</b></p>
+												<p>Sugar : <b>' .$sugar. '</b></p>
                                             </td>
                                             <td class="text-center">
 												<div class="row mx-auto" style="width:112px">
@@ -127,6 +139,7 @@
         $pizzaName = $pizzaRow['pizzaName'];
         $pizzaPrice = $pizzaRow['pizzaPrice'];
 		$pizzaCal = $pizzaRow['pizzaCal'];
+		$sugar = $pizzaRow['sugar'];
         $pizzaCategorieId = $pizzaRow['pizzaCategorieId'];
         $pizzaDesc = $pizzaRow['pizzaDesc'];
 ?>
@@ -167,6 +180,13 @@
                 	<input class="form-control" id="price" name="price" value="<?php echo $pizzaPrice; ?>" type="number" min="1" required>
 					<b><label for="calorie">Calorie</label></b>
 					<input class="form-control" id="calorie" name="calorie" value="<?php echo $pizzaCal; ?>" type="number" min="1" required>
+
+					<b><label for="sugar">Does this food contain sugar?</label></b>
+								<select class="form-control" id="sugar" name="sugar" required>
+									<option value="<?php echo $sugar; ?>">Select one</option>
+									<option value="yes">Yes</option>
+									<option value="no">No</option>
+								</select>
 				
 				</div>
 				<div class="form-group col-md-6">

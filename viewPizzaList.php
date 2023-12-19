@@ -61,6 +61,7 @@
                 $pizzaName = $row['pizzaName'];
                 $pizzaPrice = $row['pizzaPrice'];
                 $pizzaCal = $row['pizzaCal'];
+                $sugar=$row['sugar'];
                 $pizzaDesc = $row['pizzaDesc'];
             
                  // Check if the user has diabetes
@@ -71,22 +72,21 @@
                      $diabetesRow = mysqli_fetch_assoc($diabetesResult);
                      $userHasDiabetes = ($diabetesRow['diabetes'] == 'yes');
                  }
+                 $foodsugar = false; // Assuming the default value is 'no'
+                 if ($loggedin) {
+                    $sugarSql = "SELECT sugar FROM pizza WHERE pizzaId = $pizzaId";
+                     $sugarResult = mysqli_query($conn, $sugarSql);
+                     $sugarRow = mysqli_fetch_assoc($sugarResult);
+                     $foodsugar = ($sugarRow['sugar'] == 'yes');
+                 }
  
                                             // Display a message based on calorie content and diabetes status
                             $calorieMessage = "";
                             $calorieBackgroundColor = ""; // Variable to store the background color
 
-                            if ($userHasDiabetes) {
-                                if ($pizzaCal < 40) {
-                                    $calorieMessage = "Normal food for you";
-                                    $calorieBackgroundColor = "green"; // Set background color to green
-                                } elseif ($pizzaCal >= 40 && $pizzaCal < 50) {
-                                    $calorieMessage = "Harmful food for you";
-                                    $calorieBackgroundColor = "yellow"; // Set background color to yellow
-                                } else {
+                            if ($userHasDiabetes && $foodsugar) { 
                                     $calorieMessage = "Dangerous food for you";
-                                    $calorieBackgroundColor = "red"; // Set background color to red
-                                }
+                                    $calorieBackgroundColor = "red"; // Set background color to red         
                             }
                             
                  echo '<div class="col-xs-3 col-sm-3 col-md-3">
@@ -96,10 +96,11 @@
                                  <h5 class="card-title">' . substr($pizzaName, 0, 20). '...</h5>
                                  <h6 class="text-center" style="color: #ff0000">TK. '.$pizzaPrice. '/-</h6>
                                  <h6 class="text-center" style="color: #ff0000">Cal. '.$pizzaCal. '</h6>
+                                 <h6 class="text-center" style="color: #ff0000">Sugar: '.$sugar. '</h6>
                                  <p class="card-text">' . substr($pizzaDesc, 0, 29). '...</p>';
                  
                  if ($userHasDiabetes) {
-                    echo '<div class="alert mt-3" style="background-color: ' . $calorieBackgroundColor . '; color: #000; font-weight: bold;">
+                    echo '<div class="alert mt-3" style="background-color: ' . $calorieBackgroundColor . '; color: #000; font-weight: bold;height: 40px;">
                             <strong></strong>' . $calorieMessage . '
                         </div>';
                                     

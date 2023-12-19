@@ -9,8 +9,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $categoryId = $_POST["categoryId"];
         $price = $_POST["price"];
         $calorie = $_POST["calorie"];
+        $sugar=$_POST["sugar"];
 
-        $sql = "INSERT INTO `pizza` (`pizzaName`, `pizzaPrice`,`pizzaCal`, `pizzaDesc`, `pizzaCategorieId`, `pizzaPubDate`) VALUES ('$name', '$price','$calorie', '$description', '$categoryId', current_timestamp())";   
+
+        $sql = "INSERT INTO `pizza` (`pizzaName`, `pizzaPrice`,`pizzaCal`,`sugar`, `pizzaDesc`, `pizzaCategorieId`, `pizzaPubDate`) VALUES ('$name', '$price','$calorie','$sugar', '$description', '$categoryId', current_timestamp())";   
         $result = mysqli_query($conn, $sql);
         $pizzaId = $conn->insert_id;
         if ($result){
@@ -71,9 +73,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $pizzaDesc = $_POST["desc"];
         $pizzaPrice = $_POST["price"];
         $pizzaCal = $_POST["calorie"];
+        $sugar=$_POST["sugar"];
         $pizzaCategorieId = $_POST["catId"];
 
-        $sql = "UPDATE `pizza` SET `pizzaName`='$pizzaName', `pizzaPrice`='$pizzaPrice',`pizzaCal`='$pizzaCal', `pizzaDesc`='$pizzaDesc', `pizzaCategorieId`='$pizzaCategorieId' WHERE `pizzaId`='$pizzaId'";   
+        $sql = "UPDATE `pizza` SET `pizzaName`='$pizzaName', `pizzaPrice`='$pizzaPrice',`pizzaCal`='$pizzaCal',`sugar`='$sugar', `pizzaDesc`='$pizzaDesc', `pizzaCategorieId`='$pizzaCategorieId' WHERE `pizzaId`='$pizzaId'";   
         $result = mysqli_query($conn, $sql);
         if ($result){
             echo "<script>alert('update');

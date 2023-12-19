@@ -10,6 +10,19 @@
         </div>
         <div class="modal-body">
             <form action="partials/_manageCart.php" method="post">
+            <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                        <b><label for="account">Account Number:</label></b>
+                        <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="account" name="account" placeholder="xxxxxxxxxx" required pattern="[0-9]{11}" maxlength="11">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        <b><label for="pin">Enter Pin:</label></b>
+                        <input class="form-control" id="pin" name="pin" placeholder="Enter Pin" type="password" required minlength="4" maxlength="21" data-toggle="password">                    
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <b><label for="address">Address:</label></b>
                     <input class="form-control" id="address" name="address" placeholder="mirpur" type="text" required minlength="3" maxlength="500">

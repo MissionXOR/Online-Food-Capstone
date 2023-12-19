@@ -41,6 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             </script>";
     }
     if(isset($_POST['checkout'])) {
+        $account = $_POST["account"];
         $amount = $_POST["amount"];
         $address1 = $_POST["address"];
         $address2 = $_POST["address1"];
@@ -54,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $passRow=mysqli_fetch_assoc($passResult);
         $userName = $passRow['username'];
         if (password_verify($password, $passRow['password'])){ 
-            $sql = "INSERT INTO `orders` (`userId`, `address`, `zipCode`, `phoneNo`, `amount`, `paymentMode`, `orderStatus`, `orderDate`) VALUES ('$userId', '$address', '$zipcode', '$phone', '$amount', '0', '0', current_timestamp())";
+            $sql = "INSERT INTO `orders` (`userId`,`account`, `address`, `zipCode`, `phoneNo`, `amount`, `paymentMode`, `orderStatus`, `orderDate`) VALUES ('$userId', '$account', '$address', '$zipcode', '$phone', '$amount', '0', '0', current_timestamp())";
             $result = mysqli_query($conn, $sql);
             $orderId = $conn->insert_id;
             if ($result){

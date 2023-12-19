@@ -34,6 +34,8 @@
         $lastName = $_POST["lastName"];
         $email = $_POST["email"];
         $diabetes = $_POST["diabetes"];
+        $diet=$_POST["diet"];
+        $rate=$_POST["rate"];
         $phone = $_POST["phone"];
         $password =$_POST["password"];
 
@@ -41,7 +43,7 @@
         $passResult = mysqli_query($conn, $passSql);
         $passRow=mysqli_fetch_assoc($passResult);
         if (password_verify($password, $passRow['password'])){ 
-            $sql = "UPDATE `users` SET `firstName` = '$firstName', `lastName` = '$lastName', `email` = '$email',`diabetes` = '$diabetes', `phone` = '$phone' WHERE `id` ='$userId'";   
+            $sql = "UPDATE `users` SET `firstName` = '$firstName', `lastName` = '$lastName', `email` = '$email',`diabetes` = '$diabetes',`diet` = '$diet',`rate` = '$rate', `phone` = '$phone' WHERE `id` ='$userId'";   
             $result = mysqli_query($conn, $sql);
             if($result){
                 echo '<script>alert("Update successfully.");

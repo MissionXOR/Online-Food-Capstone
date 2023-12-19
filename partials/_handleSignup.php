@@ -8,6 +8,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $lastName = $_POST["lastName"];
     $email = $_POST["email"];
     $diabetes = $_POST["diabetes"];
+    $diet=$_POST["diet"];
+    $rate=$_POST["rate"];
     $phone = $_POST["phone"];
     $password = $_POST["password"];
     $cpassword = $_POST["cpassword"];
@@ -22,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
       if(($password == $cpassword)){
           $hash = password_hash($password, PASSWORD_DEFAULT);
-          $sql = "INSERT INTO `users` ( `username`, `firstName`, `lastName`, `email`,`diabetes`, `phone`, `password`, `joinDate`) VALUES ('$username', '$firstName', '$lastName', '$email','$diabetes', '$phone', '$hash', current_timestamp())";   
+          $sql = "INSERT INTO `users` ( `username`, `firstName`, `lastName`, `email`,`diabetes`,`diet`,`rate`, `phone`, `password`, `joinDate`) VALUES ('$username', '$firstName', '$lastName', '$email','$diabetes','$diet','$rate', '$phone', '$hash', current_timestamp())";   
           $result = mysqli_query($conn, $sql);
           if ($result){
               $showAlert = true;

@@ -1,16 +1,16 @@
-  <!-- Sign up Modal -->
-    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header" style="background-color: rgb(111 202 203);">
-            <h5 class="modal-title" id="signupModal">SignUp Here</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action="partials/_handleSignup.php" method="post">
-              <div class="form-group">
+<!-- Sign up Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: rgb(111 202 203);">
+        <h5 class="modal-title" id="signupModal">SignUp Here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="partials/_handleSignup.php" method="post">
+        <div class="form-group">
                   <b><label for="username">Username</label></b>
                   <input class="form-control" id="username" name="username" placeholder="Choose a unique Username" type="text" required minlength="3" maxlength="11">
               </div>
@@ -29,17 +29,35 @@
                   <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
               </div>
              
-                <div class="form-group">
-                <b><label for="diabetes">Do You Have Diabetes?</label></b>
-                <select class="form-control" id="diabetes" name="diabetes" required>
-                    <option value="" disabled selected>Select one</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-               </div>
 
+          <div class="form-group">
+            <b><label for="diabetes">Do You Have Diabetes?</label></b>
+            <select class="form-control" id="diabetes" name="diabetes" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
 
-              <div class="form-group">
+         <!-- Field for Non-Diabetic Users -->
+            <div class="form-group" id="dietField" style="display: none;">
+              <b><label for="diet">Are you on diet?</label></b>
+              <select class="form-control" id="diet" name="diet" required>
+                <option value="" disabled selected>Select one</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+
+            <!-- Field for Diabetic Users -->
+            <div class="form-group" id="calorieIntakeField" style="display: none;">
+              <b><label for="rate">How much is your regular calorie intake:</label></b>
+              <input type="number" class="form-control" id="rate" name="rate" placeholder="" required>
+            </div>
+
+          <!-- ... existing fields ... -->
+          
+          <div class="form-group">
                 <b><label for="phone">Phone No:</label></b>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -56,10 +74,31 @@
                   <b><label for="password1">Renter Password:</label></b>
                   <input class="form-control" id="cpassword" name="cpassword" placeholder="Renter Password" type="password" required data-toggle="password" minlength="4" maxlength="21">
               </div>
-              <button type="submit" class="btn btn-success">Submit</button>
-            </form>
-            <p class="mb-0 mt-1">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login here</a>.</p>
-          </div>
-        </div>
+
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        <p class="mb-0 mt-1">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login here</a>.</p>
       </div>
     </div>
+  </div>
+</div>
+
+<script>
+  // Add an event listener to the diabetes select field
+  document.getElementById('diabetes').addEventListener('change', function () {
+    // Toggle the visibility of fields based on the selected option
+    if (this.value === 'yes') {
+      document.getElementById('calorieIntakeField').style.display = 'block';
+      document.getElementById('dietField').style.display = 'none';
+    } else if (this.value === 'no') {
+      document.getElementById('calorieIntakeField').style.display = 'none';
+      document.getElementById('dietField').style.display = 'block';
+    }
+  });
+
+  // Add an event listener to the diet select field
+  document.getElementById('diet').addEventListener('change', function () {
+    // Toggle the visibility of the calorie intake field based on the selected option
+    document.getElementById('calorieIntakeField').style.display = (this.value === 'yes') ? 'block' : 'none';
+  });
+</script>

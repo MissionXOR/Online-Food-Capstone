@@ -66,6 +66,13 @@
                                 // Check if the user has diabetes
                                 $diabetesSql = "SELECT diabetes FROM users WHERE id = $userId";
                                 $diabetesResult = mysqli_query($conn, $diabetesSql);
+
+                                $dietSql = "SELECT diet FROM users WHERE id = $userId";
+                                $dietResult = mysqli_query($conn, $dietSql);
+
+                                $rateSql = "SELECT rate FROM users WHERE id = $userId";
+                                $rateResult = mysqli_query($conn, $rateSql);
+                                $rateRow = mysqli_fetch_assoc($rateResult);
                                 
                                 // Check for errors in the query
                                 if (!$diabetesResult) {
@@ -74,6 +81,9 @@
 
                                 $diabetesRow = mysqli_fetch_assoc($diabetesResult);
                                 $userHasDiabetes = ($diabetesRow['diabetes'] == 'yes');
+
+                                $dietRow = mysqli_fetch_assoc($dietResult);
+                                $userHasDiet = ($dietRow['diet'] == 'yes');
 
                                 while($row = mysqli_fetch_assoc($result)){
                                     $pizzaId = $row['pizzaId'];
@@ -117,10 +127,16 @@
                                 }
                                 
                                 // Check if the user has diabetes and total calories are greater than 1000
-                                if ($userHasDiabetes && $totalCalories > 1000) {
+                                if ($userHasDiabetes && $totalCalories > $rateRow['rate']) {
                                     echo '<tr>
-                                    <td colspan="7" class="text-danger"><strong style="font-size: larger;">Ordering total more than 1000 calories is harmful for Diabetes!</strong></td>
-                                          </tr>';
+                                        <td colspan="7" class="text-danger"><strong style="font-size: larger;">Ordering total more than ' . $rateRow['rate'] . ' calories it is cross your regular calorie intake. It is harmful for Diabetes!</strong></td>
+                                    </tr>';
+                                }
+                                
+                                if ($userHasDiet && $totalCalories > $rateRow['rate']) {
+                                    echo '<tr>
+                                        <td colspan="7" class="text-danger"><strong style="font-size: larger;">Ordering total more than ' . $rateRow['rate'] . ' calories it is cross your regular calorie intake.You are on Diet!</strong></td>
+                                    </tr>';
                                 }
                                 
                                 if($counter==0) {
