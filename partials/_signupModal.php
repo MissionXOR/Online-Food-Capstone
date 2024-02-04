@@ -10,26 +10,24 @@
       </div>
       <div class="modal-body">
         <form action="partials/_handleSignup.php" method="post">
-        <div class="form-group">
-                  <b><label for="username">Username</label></b>
-                  <input class="form-control" id="username" name="username" placeholder="Choose a unique Username" type="text" required minlength="3" maxlength="11">
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <b><label for="firstName">First Name:</label></b>
-                  <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <b><label for="lastName">Last name:</label></b>
-                  <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" required>
-                </div>
-              </div>
-              <div class="form-group">
-                  <b><label for="email">Email:</label></b>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
-              </div>
-             
-
+          <div class="form-group">
+            <b><label for="username">Username</label></b>
+            <input class="form-control" id="username" name="username" placeholder="Choose a unique Username" type="text" required minlength="3" maxlength="11">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <b><label for="firstName">First Name:</label></b>
+              <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+            </div>
+            <div class="form-group col-md-6">
+              <b><label for="lastName">Last name:</label></b>
+              <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <b><label for="email">Email:</label></b>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
+          </div>
           <div class="form-group">
             <b><label for="diabetes">Do You Have Diabetes?</label></b>
             <select class="form-control" id="diabetes" name="diabetes" required>
@@ -38,43 +36,37 @@
               <option value="no">No</option>
             </select>
           </div>
-
-         <!-- Field for Non-Diabetic Users -->
-            <div class="form-group" id="dietField" style="display: none;">
-              <b><label for="diet">Are you on diet?</label></b>
-              <select class="form-control" id="diet" name="diet" required>
-                <option value="" disabled selected>Select one</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
-            </div>
-
-            <!-- Field for Diabetic Users -->
-            <div class="form-group" id="calorieIntakeField" style="display: none;">
-              <b><label for="rate">How much is your regular calorie intake:</label></b>
-              <input type="number" class="form-control" id="rate" name="rate" placeholder="" required>
-            </div>
-
-          <!-- ... existing fields ... -->
-          
+          <!-- Field for Non-Diabetic Users -->
+          <div class="form-group" id="dietField">
+            <b><label for="diet">Are you on diet?</label></b>
+            <select class="form-control" id="diet" name="diet" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <!-- Field for Diabetic Users -->
+          <div class="form-group" id="calorieIntakeField">
+            <b><label for="rate">How much is your regular calorie intake:</label></b>
+            <input type="number" class="form-control" id="rate" name="rate" placeholder="" required>
+          </div>
           <div class="form-group">
-                <b><label for="phone">Phone No:</label></b>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon">+880</span>
-                  </div>
-                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" required pattern="[0-9]{10}" maxlength="10">
-                </div>
+            <b><label for="phone">Phone No:</label></b>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon">+880</span>
               </div>
-              <div class="text-left my-2">
-                  <b><label for="password">Password:</label></b>
-                  <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" required data-toggle="password" minlength="4" maxlength="21">
-              </div>
-              <div class="text-left my-2">
-                  <b><label for="password1">Renter Password:</label></b>
-                  <input class="form-control" id="cpassword" name="cpassword" placeholder="Renter Password" type="password" required data-toggle="password" minlength="4" maxlength="21">
-              </div>
-
+              <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" required pattern="[0-9]{10}" maxlength="10">
+            </div>
+          </div>
+          <div class="text-left my-2">
+            <b><label for="password">Password:</label></b>
+            <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" required data-toggle="password" minlength="4" maxlength="21">
+          </div>
+          <div class="text-left my-2">
+            <b><label for="password1">Renter Password:</label></b>
+            <input class="form-control" id="cpassword" name="cpassword" placeholder="Renter Password" type="password" required data-toggle="password" minlength="4" maxlength="21">
+          </div>
           <button type="submit" class="btn btn-success">Submit</button>
         </form>
         <p class="mb-0 mt-1">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login here</a>.</p>
@@ -82,23 +74,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  // Add an event listener to the diabetes select field
-  document.getElementById('diabetes').addEventListener('change', function () {
-    // Toggle the visibility of fields based on the selected option
-    if (this.value === 'yes') {
-      document.getElementById('calorieIntakeField').style.display = 'block';
-      document.getElementById('dietField').style.display = 'none';
-    } else if (this.value === 'no') {
-      document.getElementById('calorieIntakeField').style.display = 'none';
-      document.getElementById('dietField').style.display = 'block';
-    }
-  });
-
-  // Add an event listener to the diet select field
-  document.getElementById('diet').addEventListener('change', function () {
-    // Toggle the visibility of the calorie intake field based on the selected option
-    document.getElementById('calorieIntakeField').style.display = (this.value === 'yes') ? 'block' : 'none';
-  });
-</script>

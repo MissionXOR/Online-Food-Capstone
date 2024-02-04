@@ -30,7 +30,7 @@
     <div class="container" id="cont">
         <div class="row">
             <div class="alert alert-info mb-0" style="width: -webkit-fill-available;">
-              <strong>Info! online payment is currently available, but you may face some technical problems.</strong> 
+              <!-- <strong>Info! online payment is currently available, but you may face some technical problems.</strong>  -->
             </div>
             <div class="col-lg-12 text-center border rounded bg-light my-3">
                 <h1>My Cart</h1>

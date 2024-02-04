@@ -243,10 +243,10 @@
 
           <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
             <div class="member">
-               <img src="assets/img/team/ashik.jpg" class="img-fluid" alt="" style="height: 198px;width: 198px;"> 
+               <img src="assets\img\team\sumon.jpg" class="img-fluid" alt="" style="height: 198px;width: 198px;"> 
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Ashik</h4> 
+                  <h4>Sumon</h4> 
                 </div>
                  <div class="social">
                   <a href="https://twitter.com/" target="_blank"><i class="icofont-twitter"></i></a>
@@ -256,7 +256,7 @@
             </div>
           </div>
 
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
+          <!-- <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
             <div class="member">
                <img src="assets/img/team/akas.jpg" class="img-fluid" alt="" style="height: 198px;width: 198px;"> 
               <div class="member-info">
@@ -270,7 +270,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
       </div>

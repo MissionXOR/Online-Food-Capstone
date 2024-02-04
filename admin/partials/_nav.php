@@ -13,7 +13,7 @@
             <div>
                 <a href="index.php" class="nav__logo">
                     <i class='bx bx-layer nav__logo-icon'></i>
-                    <span class="nav__logo-name">Pizza Delivery</span>
+                    <span class="nav__logo-name">CalBalance Bistro</span>
                 </a>
 
                 <div class="nav__list">
